@@ -69,8 +69,8 @@ export default function Sprint1Page() {
                 onClick={() => setSegment(s)}
                 className={`px-3 py-2.5 rounded-xl text-sm border transition-all duration-200 text-left ${
                   segment === s
-                    ? "bg-blue-600/30 border-blue-500/50 text-blue-300"
-                    : "border-slate-700/50 text-slate-400 hover:border-violet-500/30 hover:text-violet-300 hover:bg-violet-600/5"
+                    ? "bg-yellow-500/15 border-yellow-500/40 text-yellow-300 shadow-md shadow-yellow-950/20"
+                    : "border-slate-700/50 text-slate-400 hover:border-yellow-500/30 hover:text-yellow-300 hover:bg-yellow-500/5"
                 }`}
               >
                 {s}
@@ -102,11 +102,11 @@ export default function Sprint1Page() {
                 onClick={() => setFrequency(f)}
                 className={`px-4 py-3 rounded-xl text-sm border transition-all duration-200 text-left flex items-center gap-3 ${
                   frequency === f
-                    ? "bg-blue-600/30 border-blue-500/50 text-blue-300"
-                    : "border-slate-700/50 text-slate-400 hover:border-violet-500/30 hover:text-violet-300 hover:bg-violet-600/5"
+                    ? "bg-yellow-500/15 border-yellow-500/40 text-yellow-300 shadow-md shadow-yellow-950/20"
+                    : "border-slate-700/50 text-slate-400 hover:border-yellow-500/30 hover:text-yellow-300 hover:bg-yellow-500/5"
                 }`}
               >
-                <div className={`w-2 h-2 rounded-full transition-colors ${frequency === f ? "bg-blue-400" : "bg-slate-600"}`} />
+                <div className={`w-2 h-2 rounded-full transition-colors ${frequency === f ? "bg-yellow-400" : "bg-slate-600"}`} />
                 {f}
               </button>
             ))}
@@ -127,8 +127,8 @@ export default function Sprint1Page() {
                 onClick={() => setCurrentSolution(cs)}
                 className={`px-3 py-2.5 rounded-xl text-sm border transition-all duration-200 text-left ${
                   currentSolution === cs
-                    ? "bg-blue-600/30 border-blue-500/50 text-blue-300"
-                    : "border-slate-700/50 text-slate-400 hover:border-violet-500/30 hover:text-violet-300 hover:bg-violet-600/5"
+                    ? "bg-yellow-500/15 border-yellow-500/40 text-yellow-300 shadow-md shadow-yellow-950/20"
+                    : "border-slate-700/50 text-slate-400 hover:border-yellow-500/30 hover:text-yellow-300 hover:bg-yellow-500/5"
                 }`}
               >
                 {cs}

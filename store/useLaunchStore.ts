@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import { Hypothesis, Interview, Project, SprintStatus } from '../types';
 
 interface LaunchState {
@@ -17,31 +18,38 @@ interface LaunchState {
   reset: () => void;
 }
 
-export const useLaunchStore = create<LaunchState>((set) => ({
-  project: null,
-  hypotheses: [],
-  interviews: [],
-  isLoading: false,
+export const useLaunchStore = create<LaunchState>()(
+  persist(
+    (set) => ({
+      project: null,
+      hypotheses: [],
+      interviews: [],
+      isLoading: false,
 
-  setProject: (project) => set({ project }),
-  
-  updateStatus: (status) => set((state) => ({ 
-    project: state.project ? { ...state.project, status } : null 
-  })),
+      setProject: (project) => set({ project }),
+      
+      updateStatus: (status) => set((state) => ({ 
+        project: state.project ? { ...state.project, status } : null 
+      })),
 
-  addHypothesis: (hypothesis) => set((state) => ({
-    hypotheses: [...state.hypotheses, hypothesis]
-  })),
+      addHypothesis: (hypothesis) => set((state) => ({
+        hypotheses: [...state.hypotheses, hypothesis]
+      })),
 
-  updateHypothesisStatus: (id, status) => set((state) => ({
-    hypotheses: state.hypotheses.map(h => h.id === id ? { ...h, status } : h)
-  })),
+      updateHypothesisStatus: (id, status) => set((state) => ({
+        hypotheses: state.hypotheses.map(h => h.id === id ? { ...h, status } : h)
+      })),
 
-  addInterview: (interview) => set((state) => ({
-    interviews: [...state.interviews, interview]
-  })),
+      addInterview: (interview) => set((state) => ({
+        interviews: [...state.interviews, interview]
+      })),
 
-  setLoading: (isLoading) => set({ isLoading }),
+      setLoading: (isLoading) => set({ isLoading }),
 
-  reset: () => set({ project: null, hypotheses: [], interviews: [], isLoading: false })
-}));
+      reset: () => set({ project: null, hypotheses: [], interviews: [], isLoading: false })
+    }),
+    {
+      name: 'launch-loop-store',
+    }
+  )
+);

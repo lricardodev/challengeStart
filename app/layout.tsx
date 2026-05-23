@@ -13,13 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LaunchLoop",
+  title: "LaunchLoop • Mi entrega para el Challenge START Lima",
   description:
-    "A platform that guides students and first-time founders from a rough idea to real validation through actionable micro-sprints.",
-  keywords: ["startup", "validation", "founder", "mvp", "hypothesis", "lean startup"],
+    "Una plataforma diseñada para guiarte paso a paso desde una idea hasta su validación real a través de 5 sprints accionables.",
+  keywords: ["startup", "validación", "founder", "mvp", "hipótesis", "lean startup"],
   openGraph: {
-    title: "LaunchLoop",
-    description: "From idea to validated MVP in 5 structured sprints.",
+    title: "LaunchLoop • Mi entrega para el Challenge START Lima",
+    description: "De la idea al MVP validado en 5 sprints estructurados.",
     type: "website",
   },
 };
@@ -31,10 +31,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans bg-[#0B1224] text-slate-200 overflow-x-hidden">
+      <body className="min-h-full flex flex-col font-sans bg-[#020617] text-slate-200 overflow-x-hidden">
         {children}
       </body>
     </html>

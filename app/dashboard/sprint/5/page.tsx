@@ -3,7 +3,16 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useLaunchStore } from "../../../../store/useLaunchStore";
-import { Presentation, Download, Copy, CheckCheck, Sparkles, Loader2, ArrowUpRight } from "lucide-react";
+import {
+  Presentation,
+  Download,
+  Copy,
+  CheckCheck,
+  Sparkles,
+  Loader2,
+  ArrowUpRight,
+  PartyPopper,
+} from "lucide-react";
 
 interface PitchData {
   problem: string;
@@ -30,8 +39,7 @@ function generatePitch(idea: string): PitchData {
         "Mercado objetivo inicial: estudiantes universitarios de 18-28 años en ciudades con alta densidad universitaria (CDMX, Monterrey, Guadalajara). TAM estimado: 2.3M de estudiantes universitarios que cambian de residencia cada 1-2 años.",
       insight:
         "El problema real no es encontrar roommates — es poder confiar en ellos. 9 de 12 personas entrevistadas mencionaron el miedo a estafas como la barrera principal, por encima de la dificultad de encontrar perfiles compatibles.",
-      mvp:
-        "Landing page + waitlist enfocada en la propuesta de 'Roommates Verificados'. No construir la app completa. Validar si 200+ personas se registran en 14 días. Si sí, proceder con la verificación manual como servicio premium antes de automatizar.",
+      mvp: "Landing page + waitlist enfocada en la propuesta de 'Roommates Verificados'. No construir la app completa. Validar si 200+ personas se registran en 14 días. Si sí, proceder con la verificación manual como servicio premium antes de automatizar.",
       nextSteps: [
         "Semana 1: Crear landing page con headline 'El roommate perfecto, verificado'",
         "Semana 1-2: Lanzar en grupos universitarios de Facebook y WhatsApp",
@@ -104,11 +112,36 @@ export default function Sprint5Page() {
 
   const sections = pitch
     ? [
-        { label: "🎯 Problema", content: pitch.problem, color: "border-rose-500/20", accent: "from-rose-600/10" },
-        { label: "💡 Solución", content: pitch.solution, color: "border-blue-500/20", accent: "from-blue-600/10" },
-        { label: "📊 Mercado", content: pitch.market, color: "border-cyan-500/20", accent: "from-cyan-600/10" },
-        { label: "🔍 Insight validado", content: pitch.insight, color: "border-violet-500/20", accent: "from-violet-600/10" },
-        { label: "🚀 MVP recomendado", content: pitch.mvp, color: "border-emerald-500/20", accent: "from-emerald-600/10" },
+        {
+          label: "🎯 Problema",
+          content: pitch.problem,
+          color: "border-rose-500/20",
+          accent: "from-rose-600/10",
+        },
+        {
+          label: "💡 Solución",
+          content: pitch.solution,
+          color: "border-blue-500/20",
+          accent: "from-blue-600/10",
+        },
+        {
+          label: "📊 Mercado",
+          content: pitch.market,
+          color: "border-cyan-500/20",
+          accent: "from-cyan-600/10",
+        },
+        {
+          label: "🔍 Insight validado",
+          content: pitch.insight,
+          color: "border-violet-500/20",
+          accent: "from-violet-600/10",
+        },
+        {
+          label: "🚀 MVP recomendado",
+          content: pitch.mvp,
+          color: "border-emerald-500/20",
+          accent: "from-emerald-600/10",
+        },
       ]
     : [];
 
@@ -127,19 +160,33 @@ export default function Sprint5Page() {
         </div>
         <h1 className="text-3xl font-bold text-white">Preparar el Pitch</h1>
         <p className="text-slate-400 mt-2 leading-relaxed">
-          Consolida todo el proceso en un pitch listo para presentar ante inversores, mentores o tu equipo.
+          Consolida todo el proceso en un pitch listo para presentar ante
+          inversores, mentores o tu equipo.
         </p>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-4">
         {[
-          { label: "Hipótesis", value: Math.max(hypotheses.length, 1), color: "text-blue-400" },
-          { label: "Entrevistas", value: Math.max(interviews.length, 12), color: "text-violet-400" },
+          {
+            label: "Hipótesis",
+            value: Math.max(hypotheses.length, 1),
+            color: "text-blue-400",
+          },
+          {
+            label: "Entrevistas",
+            value: Math.max(interviews.length, 12),
+            color: "text-violet-400",
+          },
           { label: "Sprints", value: "5/5", color: "text-emerald-400" },
         ].map(({ label, value, color }) => (
-          <div key={label} className="glass-panel border border-slate-700/30 p-4 text-center">
-            <div className={`text-2xl font-bold font-mono ${color}`}>{value}</div>
+          <div
+            key={label}
+            className="glass-panel border border-slate-700/30 p-4 text-center"
+          >
+            <div className={`text-2xl font-bold font-mono ${color}`}>
+              {value}
+            </div>
             <div className="text-xs text-slate-500 mt-1">{label}</div>
           </div>
         ))}
@@ -152,9 +199,12 @@ export default function Sprint5Page() {
             <Sparkles className="w-7 h-7 text-emerald-400" />
           </div>
           <div>
-            <h2 className="text-white font-semibold text-lg mb-1">Generar Pitch automático</h2>
+            <h2 className="text-white font-semibold text-lg mb-1">
+              Generar Pitch automático
+            </h2>
             <p className="text-slate-500 text-sm max-w-sm mx-auto">
-              LaunchLoop sintetizará todo tu proceso de validación en un pitch estructurado y listo para presentar.
+              LaunchLoop sintetizará todo tu proceso de validación en un pitch
+              estructurado y listo para presentar.
             </p>
           </div>
           <button
@@ -163,7 +213,11 @@ export default function Sprint5Page() {
             disabled={isGenerating}
             className="mx-auto flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-semibold rounded-xl transition-colors text-sm"
           >
-            {isGenerating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
+            {isGenerating ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <Sparkles className="w-4 h-4" />
+            )}
             {isGenerating ? "Generando pitch..." : "Generar pitch"}
           </button>
         </div>
@@ -177,13 +231,19 @@ export default function Sprint5Page() {
           className="space-y-4"
         >
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-white">Tu Pitch de Validación</h2>
+            <h2 className="text-lg font-semibold text-white">
+              Tu Pitch de Validación
+            </h2>
             <button
               id="copy-pitch"
               onClick={copyPitch}
               className="flex items-center gap-2 px-4 py-2 glass border border-slate-700/50 hover:border-blue-500/30 text-slate-400 hover:text-white rounded-xl text-sm transition-all"
             >
-              {copied ? <CheckCheck className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+              {copied ? (
+                <CheckCheck className="w-4 h-4 text-emerald-400" />
+              ) : (
+                <Copy className="w-4 h-4" />
+              )}
               {copied ? "Copiado" : "Copiar texto"}
             </button>
           </div>
@@ -196,10 +256,16 @@ export default function Sprint5Page() {
               transition={{ delay: i * 0.1 }}
               className={`glass-panel border ${color} p-6 relative overflow-hidden`}
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${accent} to-transparent pointer-events-none`} />
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${accent} to-transparent pointer-events-none`}
+              />
               <div className="relative">
-                <p className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-3">{label}</p>
-                <p className="text-slate-200 text-sm leading-relaxed">{content}</p>
+                <p className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-3">
+                  {label}
+                </p>
+                <p className="text-slate-200 text-sm leading-relaxed">
+                  {content}
+                </p>
               </div>
             </motion.div>
           ))}
@@ -213,7 +279,9 @@ export default function Sprint5Page() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-amber-600/10 to-transparent pointer-events-none" />
             <div className="relative space-y-4">
-              <p className="text-xs font-mono text-amber-400 uppercase tracking-widest">🗺 Próximos pasos</p>
+              <p className="text-xs font-mono text-amber-400 uppercase tracking-widest">
+                🗺 Próximos pasos
+              </p>
               <ol className="space-y-3">
                 {pitch.nextSteps.map((step, i) => (
                   <li key={i} className="flex gap-3 text-sm text-slate-300">
@@ -236,14 +304,19 @@ export default function Sprint5Page() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-violet-600/10 to-transparent pointer-events-none" />
             <div className="relative">
-              <div className="text-3xl mb-2">🎉</div>
-              <h3 className="text-white font-bold text-lg">¡Loop completado!</h3>
+              <div className="flex justify-center items-center text-3xl mb-2">
+                {<PartyPopper className="text-[#eab308]" />}
+              </div>
+              <h3 className="text-white font-bold text-lg">
+                ¡Loop completado!
+              </h3>
               <p className="text-slate-400 text-sm">
-                Has pasado de una idea vaga a una hipótesis validada con datos reales. Eso es exactamente lo que hace un founder.
+                Has pasado de una idea vaga a una hipótesis validada con datos
+                reales. Eso es exactamente lo que hace un founder.
               </p>
               <button
                 id="new-loop-btn"
-                onClick={() => window.location.href = "/"}
+                onClick={() => (window.location.href = "/")}
                 className="mt-3 inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-violet-400 hover:text-slate-950 hover:shadow-violet-500/20 text-white font-semibold rounded-xl transition-all duration-200 text-sm"
               >
                 <ArrowUpRight className="w-4 h-4" />

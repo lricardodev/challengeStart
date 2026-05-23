@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Layers, Globe, Users, Code, Bot, DoorOpen, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Layers, Megaphone, Users, Package, HandHelping, TrendingUp, ArrowRight, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 interface MvpOption {
@@ -21,8 +21,8 @@ const MVP_OPTIONS: MvpOption[] = [
   {
     id: "waitlist",
     icon: Users,
-    label: "Landing Page + Waitlist",
-    description: "Crea una página simple que describa el problema y la solución. Mide el interés con registros antes de construir.",
+    label: "Lista de interés",
+    description: "Presenta tu solución y recoge registros, reservas o pre-pedidos antes de producir, abrir o construir a gran escala.",
     effort: "Bajo",
     recommendation: true,
     color: "text-emerald-400",
@@ -31,9 +31,9 @@ const MVP_OPTIONS: MvpOption[] = [
   },
   {
     id: "landing",
-    icon: Globe,
-    label: "Landing Page Pura",
-    description: "Describe tu propuesta de valor con un CTA claro. Ideal para validar el mensaje antes del producto.",
+    icon: Megaphone,
+    label: "Propuesta de valor",
+    description: "Comunica qué ofreces y a quién — con un folleto, carta de ventas, post o página web. Valida si el mensaje conecta.",
     effort: "Bajo",
     color: "text-blue-400",
     border: "border-blue-500/20",
@@ -41,29 +41,29 @@ const MVP_OPTIONS: MvpOption[] = [
   },
   {
     id: "prototype",
-    icon: Code,
-    label: "Prototipo Clickable",
-    description: "Crea un flujo en Figma o similar. Pruébalo con 5 usuarios para validar la UX antes de desarrollar.",
+    icon: Package,
+    label: "Prototipo o muestra",
+    description: "Crea una versión tangible de tu idea: mockup, muestra física, menú piloto o demo. Pruébala con clientes reales.",
     effort: "Medio",
     color: "text-violet-400",
     border: "border-violet-500/20",
     bg: "bg-violet-600/10",
   },
   {
-    id: "automation",
-    icon: Bot,
-    label: "Automatización Simple",
-    description: "Resuelve el problema manualmente con herramientas como Airtable, Zapier o Notion. Valida sin escribir código.",
+    id: "concierge",
+    icon: HandHelping,
+    label: "Servicio manual (Concierge)",
+    description: "Ofrece el servicio completo a mano, sin escalar. Valida que la gente paga antes de invertir en infraestructura o producción.",
     effort: "Medio",
     color: "text-amber-400",
     border: "border-amber-500/20",
     bg: "bg-amber-600/10",
   },
   {
-    id: "fake-door",
-    icon: DoorOpen,
-    label: "Fake Door Testing",
-    description: "Muestra un botón o feature que no existe aún. Mide cuántos usuarios hacen clic para validar el interés real.",
+    id: "demand-test",
+    icon: TrendingUp,
+    label: "Prueba de demanda",
+    description: "Ofrece algo que aún no existe — un producto, plan o servicio — y mide cuántas personas muestran interés real.",
     effort: "Bajo",
     color: "text-cyan-400",
     border: "border-cyan-500/20",
@@ -79,39 +79,39 @@ const EFFORT_COLOR: Record<string, string> = {
 
 const ACTION_PLAN: Record<string, string[]> = {
   waitlist: [
-    "Escribe un headline claro que describa el problema (#1 pain point detectado)",
-    "Añade una propuesta de valor en 1 oración",
-    "Crea un formulario de registro con email (usa Typeform, Tally o similar)",
-    "Comparte en grupos de Facebook/WhatsApp donde está tu segmento",
-    "Meta: 50 registros en 7 días antes de continuar",
+    "Escribe un headline claro que describa el problema que resuelves",
+    "Añade tu propuesta de valor en 1 oración",
+    "Abre un canal de registro: formulario, WhatsApp, cuaderno en tu local o evento",
+    "Comparte donde está tu segmento: redes, boca a boca, ferias o comunidades locales",
+    "Meta: 50 registros o reservas en 7 días antes de continuar",
   ],
   landing: [
-    "Define el headline: 'La forma más segura de encontrar roommates'",
-    "Incluye 3 beneficios claros centrados en la confianza",
-    "Añade un CTA: 'Quiero acceso anticipado'",
-    "Publica con Vercel o Netlify en menos de 1 hora",
-    "Meta: 200 visitas únicas y 30% tasa de conversión",
+    "Define el headline con el beneficio principal para tu cliente",
+    "Incluye 3 beneficios claros centrados en su dolor o necesidad",
+    "Añade un CTA concreto: 'Reservar', 'Pedir info' o 'Unirme a la lista'",
+    "Distribúyelo online o imprime un folleto para compartir en persona",
+    "Meta: 200 contactos y al menos 20% muestran interés activo",
   ],
   prototype: [
-    "Mapea el flujo de 3-5 pantallas clave en Figma",
-    "Prioriza la pantalla de verificación de identidad",
-    "Recluta 5 personas de tu segmento para sesiones de prueba",
-    "Observa dónde se confunden o se detienen",
-    "Itera el diseño antes de escribir código",
+    "Define la versión mínima que tu cliente puede ver, tocar o probar",
+    "Créala: mockup, muestra física, menú piloto, demo en video o catálogo",
+    "Recluta 5 personas de tu segmento para probarla",
+    "Observa reacciones: ¿entendieron la propuesta? ¿querrían pagar?",
+    "Ajusta antes de producir en serie, abrir local o escalar",
   ],
-  automation: [
-    "Crea un formulario Typeform para perfiles de roommates",
-    "Conecta con Airtable para organizar los perfiles",
-    "Verifica identidad manualmente vía videollamada",
-    "Cobra una tarifa pequeña por el proceso de verificación",
-    "Valida si la gente paga antes de automatizar",
+  concierge: [
+    "Ofrece el servicio completo de forma manual a 3–5 clientes",
+    "Usa lo que tengas: Excel, WhatsApp, cuaderno, tu cocina o taller",
+    "Cobra el precio real desde el primer día",
+    "Documenta qué pasos repites y cuánto tiempo toman",
+    "Valida que la gente paga antes de automatizar o escalar",
   ],
-  "fake-door": [
-    "Añade un botón 'Verificar mi perfil' en tu landing existente",
-    "Al hacer clic, redirige a un formulario de 'lista de espera'",
-    "Mide cuántos usuarios hacen clic vs los que solo ven",
-    "Si el CTR es > 20%, el feature tiene validación suficiente",
-    "Construye el feature real solo si hay demanda comprobada",
+  "demand-test": [
+    "Presenta una oferta que aún no existe: producto, plan o servicio nuevo",
+    "Pide un gesto concreto: reserva, depósito, lista de espera o encargo",
+    "Mide cuántos actúan vs cuántos solo miran o preguntan",
+    "Si más del 20% muestra interés real, hay señal suficiente para avanzar",
+    "Produce o desarrolla solo con demanda comprobada",
   ],
 };
 
@@ -137,7 +137,7 @@ export default function Sprint4Page() {
         </div>
         <h1 className="text-3xl font-bold text-white">Crear el MVP</h1>
         <p className="text-slate-400 mt-2 leading-relaxed">
-          Antes de construir una app completa, valida con el MVP más pequeño posible.
+          Antes de invertir a gran escala, valida con la versión más pequeña de tu idea.
         </p>
       </div>
 
@@ -147,9 +147,9 @@ export default function Sprint4Page() {
         <div className="relative">
           <p className="text-xs font-mono text-emerald-400 uppercase tracking-widest mb-2">Recomendación basada en tus patrones</p>
           <p className="text-slate-200 text-sm leading-relaxed">
-            Antes de construir una app completa, valida una{" "}
-            <strong className="text-white">waitlist enfocada en seguridad y verificación</strong>.
-            Tus entrevistas muestran que el miedo a estafas (75%) es el dolor más grande — no la dificultad de encontrar roommates.
+            Empieza con el MVP de menor esfuerzo: una{" "}
+            <strong className="text-white">lista de interés</strong> centrada en el dolor principal
+            que detectaste en tus entrevistas. Mide demanda real antes de producir, abrir o construir.
           </p>
         </div>
       </div>
